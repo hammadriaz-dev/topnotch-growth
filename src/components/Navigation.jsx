@@ -4,6 +4,9 @@ import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import logo from '../assets/TopNotchGrowth.png'
 
+// Define the Google Calendar configuration URL (same as Contact.jsx)
+const GOOGLE_CALENDAR_URL = 'https://calendar.google.com/calendar/appointments/AcZssZ1KKwKHvRZzLO2VsgHc57HM8ohjLRxYf_nqSIw=?gv=true';
+
 const Navigation = ({ isScrolled }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const location = useLocation()
@@ -12,6 +15,7 @@ const Navigation = ({ isScrolled }) => {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
+    { name: 'Industries', path: '/industries' },
     { name: 'Contact', path: '/contact' },
     { name: 'Blog', path: '/blog' },
   ]
@@ -33,21 +37,25 @@ const Navigation = ({ isScrolled }) => {
               <Link
                 key={item.name}
                 to={item.path}
-                className={`font-medium transition-colors duration-200 ${
-                  isActive(item.path)
+                className={`font-medium transition-colors duration-200 ${isActive(item.path)
                     ? 'text-[#5fc36b]'
                     : 'text-[#0a1a3b] hover:text-[#5fc36b]'
-                }`}
+                  }`}
               >
                 {item.name}
               </Link>
             ))}
-            <Button 
+
+            {/* UPDATED: Desktop Book a Call Button with Google Calendar Link */}
+            <Button
               className="ml-4 px-6 py-2 bg-black text-white rounded-md hover:bg-[#5fc36b] transition-colors duration-200"
-              onClick={() => window.open('https://calendly.com', '_blank')}
+              asChild 
             >
-              Book a Call
+              <a href={GOOGLE_CALENDAR_URL} target="_blank" rel="noopener noreferrer">
+                Book a Call
+              </a>
             </Button>
+
           </div>
 
           {/* Mobile Menu Button */}
@@ -71,25 +79,29 @@ const Navigation = ({ isScrolled }) => {
                 <Link
                   key={item.name}
                   to={item.path}
-                  className={`block px-3 py-2 text-base font-medium transition-colors duration-200 ${
-                    isActive(item.path)
+                  className={`block px-3 py-2 text-base font-medium transition-colors duration-200 ${isActive(item.path)
                       ? 'text-[#5fc36b] bg-gray-50'
                       : 'text-[#0a1a3b] hover:text-[#5fc36b] hover:bg-gray-50'
-                  }`}
+                    }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
               <div className="px-3 py-2">
-                <Button 
+                {/* UPDATED: Mobile Book a Call Button with Google Calendar Link */}
+                <Button
                   className="w-full px-6 py-2 bg-black text-white rounded-md hover:bg-[#5fc36b] transition-colors duration-200"
-                  onClick={() => {
-                    window.open('https://calendly.com', '_blank')
-                    setIsMenuOpen(false)
-                  }}
+                  asChild
                 >
-                  Book a Call
+                  <a
+                    href={GOOGLE_CALENDAR_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsMenuOpen(false)} // Close menu on click
+                  >
+                    Book a Call
+                  </a>
                 </Button>
               </div>
             </div>

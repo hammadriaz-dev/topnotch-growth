@@ -4,8 +4,11 @@ import Navigation from './components/Navigation'
 import Home from './components/Home'
 import About from './components/About'
 import Services from './components/Services'
+import Industries from './components/Industries'
 import Contact from './components/Contact'
+import Footer from './components/Footer'
 import Blog from './components/Blog'
+import ScrollToTop from './components/ScrollToTop'
 import './App.css'
 
 function App() {
@@ -22,15 +25,19 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-white">
         <Navigation isScrolled={isScrolled} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/industries" element={<Industries />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
         </Routes>
+
+        <Footer />
       </div>
     </Router>
   )

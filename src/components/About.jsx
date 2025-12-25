@@ -261,53 +261,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-deep-blue py-12">
-        <div className="container-width mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <h3 className="text-white font-semibold mb-4">Quick Links</h3>
-              <div className="space-y-2">
-                <a href="/" className="block text-light-text hover:text-electric-green transition-colors">Home</a>
-                <a href="/about" className="block text-light-text hover:text-electric-green transition-colors">About</a>
-                <a href="/services" className="block text-light-text hover:text-electric-green transition-colors">Services</a>
-                <a href="/contact" className="block text-light-text hover:text-electric-green transition-colors">Contact</a>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-white font-semibold mb-4">Services</h3>
-              <div className="space-y-2">
-                <div className="text-light-text">Lead Generation</div>
-                <div className="text-light-text">Cold Calling</div>
-                <div className="text-light-text">Email Outreach</div>
-                <div className="text-light-text">Appointment Setting</div>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-white font-semibold mb-4">Industries</h3>
-              <div className="space-y-2">
-                <div className="text-light-text">Real Estate</div>
-                <div className="text-light-text">Technology</div>
-                <div className="text-light-text">eCommerce</div>
-                <div className="text-light-text">SaaS</div>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-white font-semibold mb-4">Contact</h3>
-              <div className="space-y-2">
-                <div className="text-light-text">hello@topnotchgrowth.com</div>
-                <div className="text-light-text">+1 (555) 123-4567</div>
-                <div className="text-light-text">Lahore, Pakistan</div>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-600 pt-8 text-center">
-            <p className="text-light-text">
-              © 2025 TopNotch Growth. Smart Systems. Real Results.
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }

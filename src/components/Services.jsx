@@ -1,93 +1,296 @@
-import { ArrowRight, Target, Phone, Mail, Calendar, BarChart3, TrendingUp, Users, Shield, Clock } from 'lucide-react'
+import { useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom' 
+import {
+  ArrowRight, Target, Phone, Mail, Calendar, BarChart3, TrendingUp, Users, Shield, Clock,
+  Handshake, Zap, Layers, Activity, BookOpen, Settings, Send, Users2
+} from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 
+
+
+
+// Define the Google Calendar configuration URL (Use your actual URL)
+const GOOGLE_CALENDAR_URL = 'https://calendar.google.com/calendar/appointments/AcZssZ1KKwKHvRZzLO2VsgHc57HM8ohjLRxYf_nqSIw=?gv=true';
+
+
 const Services = () => {
+
+  const location = useLocation()
+
+useEffect(() => {
+  if (location.hash) {
+    const id = location.hash.replace('#', '')
+    const el = document.getElementById(id)
+
+    if (el) {
+      // delay ensures DOM is fully rendered
+      setTimeout(() => {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 100)
+    }
+  }
+}, [location])
+
+
+
+
   const serviceCategories = [
     {
-      icon: <Target className="h-16 w-16 text-electric-green" />,
-      title: "Lead Generation & Prospecting",
-      description: "Identify and qualify your ideal customers with precision targeting."
+      icon: <Zap className="h-6 w-10 text-electric-green" />,
+      title: "Sales development",
     },
     {
-      icon: <Phone className="h-16 w-16 text-electric-green" />,
-      title: "Outreach & Sales Development",
-      description: "Connect with prospects through multi-channel communication strategies."
+      icon: <Users className="h-6 w-10 text-electric-green" />,
+      title: "Outsourced SDRs",
     },
     {
-      icon: <BarChart3 className="h-16 w-16 text-electric-green" />,
-      title: "Paid Advertising & Marketing Systems",
-      description: "Scale your reach with high-ROI advertising campaigns."
-    }
+      icon: <Target className="h-6 w-10 text-electric-green" />,
+      title: "Lead generation",
+    },
+    {
+      icon: <Handshake className="h-6 w-10 text-electric-green" />,
+      title: "Sales enablement",
+    },
+    {
+      icon: <Layers className="h-6 w-10 text-electric-green" />,
+      title: "Lead nurturing",
+    },
+    {
+      icon: <BookOpen className="h-6 w-10 text-electric-green" />,
+      title: "Lead generation training",
+    },
+    {
+      icon: <Activity className="h-6 w-10 text-electric-green" />,
+      title: "Demand generation",
+    },
+    {
+      icon: <Settings className="h-6 w-10 text-electric-green" />,
+      title: "HubSpot CRM consulting",
+    },
+    {
+      icon: <Send className="h-6 w-10 text-electric-green" />,
+      title: "Deliverability consulting",
+    },
+    {
+      icon: <Users2 className="h-6 w-10 text-electric-green" />,
+      title: "Account-based marketing",
+    },
   ]
 
   const detailedServices = [
     {
-      icon: <Target className="h-12 w-12 text-electric-green" />,
-      title: "Lead Generation That Converts",
-      subtitle: "We find your ideal customers — and bring them to you.",
-      description: "Using premium tools like Apollo, LinkedIn Sales Navigator, and ZoomInfo, we identify your ICP, validate data, and build targeted lead lists that fuel your outreach campaigns.",
+      icon: <TrendingUp className="h-12 w-12 text-electric-green" />,
+      title: "Sales Development",
+      subtitle: "Transform your sales process and pipeline.",
+      description: "We implement strategic sales development programs to increase prospect engagement, accelerate pipeline velocity, and boost revenue.",
       deliverables: [
-        "ICP Research & Data Strategy",
-        "Verified Leads (B2B & B2C)",
-        "CRM Integration Support",
-        "Lead Scoring & Qualification"
+        "Prospecting Strategy & Playbooks",
+        "Outbound Outreach Programs",
+        "KPIs & Sales Metrics Setup",
+        "Custom Sales Workflow Design"
       ],
-      cta: "Get Qualified Leads"
+      cta: "Boost Sales Performance",
+      metrics: {
+        mainValue: "150%",
+        mainLabel: "Pipeline Growth",
+        stats: [
+          { value: "95%", label: "Lead Conversion" },
+          { value: "2X", label: "Engagement Rate" }
+        ]
+      }
     },
     {
-      icon: <Phone className="h-12 w-12 text-electric-green" />,
-      title: "Cold Calls That Create Warm Opportunities",
-      subtitle: "Our trained experts turn introductions into booked meetings.",
-      description: "We connect directly with decision-makers, using proven conversation frameworks that build trust, overcome objections, and secure meetings for your sales team.",
+      icon: <Users className="h-12 w-12 text-electric-green" />,
+      title: "Outsourced SDRs",
+      subtitle: "Extend your sales team with expert SDRs.",
+      description: "Our remote SDRs handle prospecting, lead qualification, and initial outreach so your internal sales team can focus on closing deals.",
       deliverables: [
-        "Call Scripts & Strategy",
-        "Live Reporting Dashboard",
-        "Performance Tracking",
-        "Objection Handling Training"
+        "Dedicated SDR Hiring & Onboarding",
+        "Multi-Channel Outreach Execution",
+        "Daily & Weekly Reporting",
+        "CRM & Lead Management Support"
       ],
-      cta: "Book a Call Session"
+      cta: "Hire SDR Team",
+      metrics: {
+        mainValue: "50+",
+        mainLabel: "SDRs Deployed",
+        stats: [
+          { value: "20k", label: "Calls Made" },
+          { value: "1,200", label: "Leads Qualified" }
+        ]
+      }
     },
     {
       icon: <Mail className="h-12 w-12 text-electric-green" />,
-      title: "Personalized Email Campaigns That Drive Replies",
-      subtitle: "Automation + personalization = results.",
-      description: "We craft compelling cold email sequences designed to engage prospects and convert interest into conversations — backed by A/B testing and deliverability optimization.",
+      title: "Lead Generation",
+      subtitle: "Drive a steady flow of qualified leads.",
+      description: "We identify, target, and deliver high-quality leads for your sales team using advanced tools and precise market research.",
       deliverables: [
-        "Cold Email Copy & Templates",
-        "Campaign Setup & Monitoring",
-        "Performance Analytics",
-        "Deliverability Optimization"
+        "Ideal Customer Profile Research",
+        "Lead List Verification",
+        "Segmentation & Targeting",
+        "CRM Integration & Tracking"
       ],
-      cta: "Start Email Campaign"
+      cta: "Generate Leads",
+      metrics: {
+        mainValue: "999,999+",
+        mainLabel: "Leads Delivered",
+        stats: [
+          { value: "92%", label: "Data Accuracy" },
+          { value: "30d", label: "Avg Delivery" }
+        ]
+      }
+    },
+    {
+      icon: <Shield className="h-12 w-12 text-electric-green" />,
+      title: "Sales Enablement",
+      subtitle: "Empower your team with tools to close more deals.",
+      description: "We create resources, processes, and training that equip sales teams to engage prospects effectively and drive higher conversion rates.",
+      deliverables: [
+        "Sales Playbooks & Templates",
+        "Training Workshops",
+        "Content Management",
+        "Dashboard & Performance Metrics"
+      ],
+      cta: "Enable Your Sales Team",
+      metrics: {
+        mainValue: "85%",
+        mainLabel: "Rep Productivity",
+        stats: [
+          { value: "120", label: "Workflows Created" },
+          { value: "98%", label: "Content Utilization" }
+        ]
+      }
+    },
+    {
+      icon: <Target className="h-12 w-12 text-electric-green" />,
+      title: "Lead Nurturing",
+      subtitle: "Build long-term relationships with prospects.",
+      description: "We design personalized, multi-channel nurture campaigns to keep leads engaged and guide them seamlessly through your sales funnel.",
+      deliverables: [
+        "Email & SMS Nurture Sequences",
+        "Automated Follow-Up Cadences",
+        "Behavioral Lead Scoring",
+        "Pipeline Conversion Optimization"
+      ],
+      cta: "Nurture Leads Effectively",
+      metrics: {
+        mainValue: "75%",
+        mainLabel: "Lead Engagement",
+        stats: [
+          { value: "40%", label: "Reply Rate" },
+          { value: "28d", label: "Avg Nurture Time" }
+        ]
+      }
     },
     {
       icon: <Calendar className="h-12 w-12 text-electric-green" />,
-      title: "Your Calendar, Fully Booked",
-      subtitle: "We handle the outreach, you focus on closing.",
-      description: "Our expert appointment setters engage, nurture, and qualify leads so you can focus on what matters most — growing your business and closing deals.",
+      title: "Lead Generation Training",
+      subtitle: "Train your team to generate quality leads.",
+      description: "We offer hands-on training for your sales and marketing teams on modern lead generation, prospecting techniques, and automation tools.",
       deliverables: [
-        "Multi-Channel Outreach (Call + Email + DM)",
-        "Qualification Process",
-        "Calendar Integration",
-        "Follow-up Sequences"
+        "Live Training Sessions",
+        "Scripts & Email Templates",
+        "Tool Setup & Optimization",
+        "Ongoing Coaching & Support"
       ],
-      cta: "Let's Fill Your Calendar"
+      cta: "Train Your Team",
+      metrics: {
+        mainValue: "100+",
+        mainLabel: "Trained Reps",
+        stats: [
+          { value: "95%", label: "Training Satisfaction" },
+          { value: "20h", label: "Avg Training Hours" }
+        ]
+      }
     },
     {
       icon: <BarChart3 className="h-12 w-12 text-electric-green" />,
-      title: "High-ROI Ad Campaigns That Scale",
-      subtitle: "From clicks to conversions — we optimize every step.",
-      description: "We design, launch, and manage ad campaigns on Meta and Google that attract ready-to-buy customers while keeping your ROI in focus and scaling efficiently.",
+      title: "Demand Generation",
+      subtitle: "Increase awareness and pipeline opportunities.",
+      description: "We execute marketing programs designed to create interest in your products, educate prospects, and drive qualified demand to your sales team.",
       deliverables: [
-        "Audience Targeting",
-        "Ad Copy & Creative",
-        "Monthly Performance Report",
-        "ROI Optimization"
+        "Integrated Marketing Campaigns",
+        "Content Strategy & Creation",
+        "Lead Scoring & Qualification",
+        "Analytics & Reporting Dashboards"
       ],
-      cta: "Launch Your Campaign"
+      cta: "Generate Demand",
+      metrics: {
+        mainValue: "200%",
+        mainLabel: "Pipeline Growth",
+        stats: [
+          { value: "150%", label: "Lead Engagement" },
+          { value: "12", label: "Campaigns Run" }
+        ]
+      }
+    },
+    {
+      icon: <Phone className="h-12 w-12 text-electric-green" />,
+      title: "HubSpot CRM Consulting",
+      subtitle: "Optimize your CRM for efficiency and growth.",
+      description: "Our experts configure HubSpot CRM to match your sales process, automate workflows, and provide actionable insights to improve performance.",
+      deliverables: [
+        "CRM Setup & Customization",
+        "Sales Pipeline Design",
+        "Dashboard & Reporting Configuration",
+        "Team Onboarding & Training"
+      ],
+      cta: "Optimize HubSpot CRM",
+      metrics: {
+        mainValue: "99%",
+        mainLabel: "CRM Adoption",
+        stats: [
+          { value: "50", label: "Workflows Automated" },
+          { value: "24/7", label: "Support" }
+        ]
+      }
+    },
+    {
+      icon: <Mail className="h-12 w-12 text-electric-green" />,
+      title: "Deliverability Consulting",
+      subtitle: "Ensure your emails reach the inbox every time.",
+      description: "We audit your email infrastructure, improve sending reputation, and optimize campaigns to increase open rates and engagement.",
+      deliverables: [
+        "Email Deliverability Audit",
+        "Domain & Authentication Setup",
+        "Campaign Optimization",
+        "Ongoing Monitoring & Reporting"
+      ],
+      cta: "Improve Email Deliverability",
+      metrics: {
+        mainValue: "98%",
+        mainLabel: "Inbox Rate",
+        stats: [
+          { value: "85%", label: "Open Rate" },
+          { value: "75%", label: "Click Rate" }
+        ]
+      }
+    },
+    {
+      icon: <ArrowRight className="h-12 w-12 text-electric-green" />,
+      title: "Account-Based Marketing",
+      subtitle: "Target and convert high-value accounts efficiently.",
+      description: "We plan and execute ABM campaigns tailored to engage specific high-value accounts with personalized messaging to accelerate deals.",
+      deliverables: [
+        "Target Account Selection",
+        "Personalized Campaign Design",
+        "Multi-Channel Engagement",
+        "Performance Tracking & Optimization"
+      ],
+      cta: "Launch ABM Campaigns",
+      metrics: {
+        mainValue: "50%",
+        mainLabel: "Account Conversion",
+        stats: [
+          { value: "20", label: "High-Value Accounts" },
+          { value: "3X", label: "ROI Growth" }
+        ]
+      }
     }
-  ]
+  ];
+
 
   const whyChooseUs = [
     {
@@ -120,22 +323,25 @@ const Services = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-white slide-in-left">
               <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Your Growth Engine 
+                Your Growth Engine
                 <span className="text-electric-green"> Starts Here</span>
               </h1>
               <p className="text-xl text-light-text mb-8 max-w-2xl leading-relaxed">
-                From lead generation to appointment setting — we craft complete systems 
+                From lead generation to appointment setting — we craft complete systems
                 that drive real business growth and measurable results.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
+                {/* 1. Book a Free Strategy Call - Google Calendar Link */}
+                <Button
                   className="btn-primary text-lg px-8 py-4"
-                  onClick={() => window.open('https://calendly.com', '_blank')}
+                  asChild
                 >
-                  Book a Free Strategy Call
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <a href={GOOGLE_CALENDAR_URL} target="_blank" rel="noopener noreferrer">
+                    Book a Free Strategy Call
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </a>
                 </Button>
-                <Button 
+                <Button
                   className="btn-secondary text-lg px-8 py-4"
                   onClick={() => document.getElementById('services-detail').scrollIntoView({ behavior: 'smooth' })}
                 >
@@ -175,6 +381,7 @@ const Services = () => {
         </div>
       </section>
 
+
       {/* Service Categories */}
       <section className="section-padding bg-white">
         <div className="container-width mx-auto">
@@ -183,39 +390,48 @@ const Services = () => {
               Comprehensive Growth Solutions, Built for Results
             </h2>
             <p className="text-xl text-gray-text max-w-4xl mx-auto">
-              Whether you're a startup, real estate agency, or enterprise brand — our systems are 
+              Whether you're a startup, real estate agency, or enterprise brand — our systems are
               built to generate qualified leads, improve conversions, and scale your revenue.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
-            {serviceCategories.map((category, index) => (
-              <Card key={index} className="card-hover border-0 shadow-lg text-center">
-                <CardContent className="p-8">
-                  <div className="mb-6 flex justify-center">
-                    {category.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold text-deep-blue mb-4">
-                    {category.title}
-                  </h3>
-                  <p className="text-gray-text leading-relaxed">
-                    {category.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
+            {serviceCategories.map((category, index) => {
+              const targetId = category.title.replace(/\s+/g, "-").toLowerCase(); // match ID
+              return (
+                <a
+                  key={index}
+                  href={`#${targetId}`}
+                  className="card-hover border-0 shadow-lg text-center transition-transform hover:scale-105"
+                >
+                  <CardContent className="p-6 flex flex-col items-center">
+                    <div className="mb-4 flex justify-center items-center">
+                      {category.icon}
+                    </div>
+                    <h3 className="text-lg font-semibold text-deep-blue flex items-center gap-2">
+                      {category.title}
+                      <ArrowRight className="h-4 w-4 text-electric-green" />
+                    </h3>
+                  </CardContent>
+                </a>
+              );
+            })}
           </div>
+
         </div>
       </section>
+
 
       {/* Detailed Services */}
       <section id="services-detail" className="section-padding bg-light-bg">
         <div className="container-width mx-auto">
           <div className="space-y-16">
             {detailedServices.map((service, index) => (
-              <div key={index} className={`grid lg:grid-cols-2 gap-12 items-center ${
-                index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
-              }`}>
+              <div
+                key={index}
+                id={service.title.replace(/\s+/g, "-").toLowerCase()} // dynamic ID
+                className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}
+              >
                 <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''} slide-in-left`}>
                   <Card className="border-0 shadow-lg">
                     <CardContent className="p-8">
@@ -247,41 +463,31 @@ const Services = () => {
                           ))}
                         </ul>
                       </div>
-                      <Button className="btn-primary">
-                        {service.cta}
-                        <ArrowRight className="ml-2 h-4 w-4" />
+                      <Button className="btn-primary" asChild>
+                        <Link to="/contact">
+                          {service.cta}
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
                       </Button>
                     </CardContent>
                   </Card>
                 </div>
                 <div className={`${index % 2 === 1 ? 'lg:col-start-1' : ''} slide-in-right`}>
                   <div className="bg-gradient-to-br from-deep-blue to-electric-green rounded-2xl p-8 text-white">
-                    <div className="space-y-6">
-                      <div className="text-center">
-                        <div className="text-4xl font-bold mb-2">
-                          {index === 0 ? '10,000+' : index === 1 ? '500+' : index === 2 ? '25%' : index === 3 ? '95%' : '3X'}
-                        </div>
-                        <div className="text-lg opacity-90">
-                          {index === 0 ? 'Leads Generated' : index === 1 ? 'Calls Made Daily' : index === 2 ? 'Open Rate' : index === 3 ? 'Show Rate' : 'Average ROI'}
-                        </div>
+                    <div className="space-y-6 text-center">
+                      <div className="text-4xl font-bold mb-2">
+                        {service.metrics.mainValue}
+                      </div>
+                      <div className="text-lg opacity-90 mb-4">
+                        {service.metrics.mainLabel}
                       </div>
                       <div className="grid grid-cols-2 gap-4 text-center">
-                        <div>
-                          <div className="text-2xl font-bold">
-                            {index === 0 ? '94%' : index === 1 ? '23%' : index === 2 ? '8%' : index === 3 ? '78%' : '156%'}
+                        {service.metrics.stats.map((stat, statIndex) => (
+                          <div key={statIndex}>
+                            <div className="text-2xl font-bold">{stat.value}</div>
+                            <div className="text-sm opacity-80">{stat.label}</div>
                           </div>
-                          <div className="text-sm opacity-80">
-                            {index === 0 ? 'Accuracy' : index === 1 ? 'Connect Rate' : index === 2 ? 'Reply Rate' : index === 3 ? 'Conversion' : 'Growth'}
-                          </div>
-                        </div>
-                        <div>
-                          <div className="text-2xl font-bold">
-                            {index === 0 ? '48h' : index === 1 ? '15min' : index === 2 ? '72h' : index === 3 ? '24h' : '30d'}
-                          </div>
-                          <div className="text-sm opacity-80">
-                            {index === 0 ? 'Delivery' : index === 1 ? 'Avg Call' : index === 2 ? 'Response' : index === 3 ? 'Setup' : 'Results'}
-                          </div>
-                        </div>
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -292,6 +498,7 @@ const Services = () => {
         </div>
       </section>
 
+
       {/* Why Choose Us */}
       <section className="section-padding bg-white">
         <div className="container-width mx-auto">
@@ -301,10 +508,10 @@ const Services = () => {
                 Why Businesses Choose TopNotch Growth
               </h2>
               <p className="text-xl text-gray-text mb-8 leading-relaxed">
-                We blend human expertise with smart systems. Every campaign we launch is built on 
+                We blend human expertise with smart systems. Every campaign we launch is built on
                 precision, personalization, and performance metrics that drive real results.
               </p>
-              
+
               <div className="space-y-6">
                 {whyChooseUs.map((item, index) => (
                   <div key={index} className="flex items-start space-x-4">
@@ -319,12 +526,15 @@ const Services = () => {
                 ))}
               </div>
 
-              <Button 
+              {/* 3. Let's Build Your Strategy Button - Google Calendar Link */}
+              <Button
                 className="btn-primary text-lg px-8 py-4 mt-8"
-                onClick={() => window.open('https://calendly.com', '_blank')}
+                asChild
               >
-                Let's Build Your Strategy
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <a href={GOOGLE_CALENDAR_URL} target="_blank" rel="noopener noreferrer">
+                  Let's Build Your Strategy
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
               </Button>
             </div>
             <div className="slide-in-right">
@@ -368,6 +578,7 @@ const Services = () => {
         </div>
       </section>
 
+
       {/* Final CTA */}
       <section className="section-padding gradient-bg">
         <div className="container-width mx-auto text-center">
@@ -375,66 +586,22 @@ const Services = () => {
             Ready to Turn Outreach into Growth?
           </h2>
           <p className="text-xl text-light-text mb-8 max-w-2xl mx-auto">
-            Let's map out a strategy that fits your business and budget. 
+            Let's map out a strategy that fits your business and budget.
             Your growth journey starts with one conversation.
           </p>
-          <Button 
+          {/* 4. Final CTA Button - Google Calendar Link */}
+          <Button
             className="btn-primary text-xl px-12 py-6 glow-effect"
-            onClick={() => window.open('https://calendly.com', '_blank')}
+            asChild
           >
-            Book a Free Strategy Call
-            <ArrowRight className="ml-2 h-6 w-6" />
+            <a href={GOOGLE_CALENDAR_URL} target="_blank" rel="noopener noreferrer">
+              Book a Free Strategy Call
+              <ArrowRight className="ml-2 h-6 w-6" />
+            </a>
           </Button>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-deep-blue py-12">
-        <div className="container-width mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <h3 className="text-white font-semibold mb-4">Quick Links</h3>
-              <div className="space-y-2">
-                <a href="/" className="block text-light-text hover:text-electric-green transition-colors">Home</a>
-                <a href="/about" className="block text-light-text hover:text-electric-green transition-colors">About</a>
-                <a href="/services" className="block text-light-text hover:text-electric-green transition-colors">Services</a>
-                <a href="/contact" className="block text-light-text hover:text-electric-green transition-colors">Contact</a>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-white font-semibold mb-4">Services</h3>
-              <div className="space-y-2">
-                <div className="text-light-text">Lead Generation</div>
-                <div className="text-light-text">Cold Calling</div>
-                <div className="text-light-text">Email Outreach</div>
-                <div className="text-light-text">Appointment Setting</div>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-white font-semibold mb-4">Industries</h3>
-              <div className="space-y-2">
-                <div className="text-light-text">Real Estate</div>
-                <div className="text-light-text">Technology</div>
-                <div className="text-light-text">eCommerce</div>
-                <div className="text-light-text">SaaS</div>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-white font-semibold mb-4">Contact</h3>
-              <div className="space-y-2">
-                <div className="text-light-text">hello@topnotchgrowth.com</div>
-                <div className="text-light-text">+1 (555) 123-4567</div>
-                <div className="text-light-text">Lahore, Pakistan</div>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-600 pt-8 text-center">
-            <p className="text-light-text">
-              © 2025 TopNotch Growth. Smart Systems. Real Results.
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }
